@@ -1,62 +1,74 @@
 body {
-    background: linear-gradient(to right, #80caff, #b3daff, #d6eaff, #e6f2ff, #f2f6fa);
-    font-family: 'Poppins', sans-serif;
-    color: #003366;
-  }
-  
-  .quiz-container {
-    max-width: 800px;
-    margin: auto;
-  }
-  
+  background: linear-gradient(to right, #80caff, #b3daff, #d6eaff, #e6f2ff, #f2f6fa);
+  font-family: 'Poppins', sans-serif;
+  color: #003366;
+  overflow-x: hidden;
+}
+
+.quiz-box {
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(128, 202, 255, 0.3);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 576px) {
   .quiz-box {
-    background-color: white;
-    border-radius: 16px;
-    padding: 30px;
-    box-shadow: 0 0 20px rgba(128, 202, 255, 0.2);
+      max-width: 90%;
+      margin: 0 auto;
   }
-  
-  h4 {
-    font-weight: 600;
-    color: #004c99;
+
+  #question {
+      font-size: 1.25rem !important; /* Override Bootstrap fs- classes */
   }
-  
-  h5 {
-    font-weight: 500;
+
+  .btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
   }
-  
-  .list-group-item {
-    background-color: #e6f2ff;
-    color: #003366;
-    border: 1px solid #b3daff;
-    margin-bottom: 12px;
-    transition: 0.3s ease;
+
+  #result h4 {
+      font-size: 1.1rem !important;
   }
-  
-  .list-group-item:hover,
-  .list-group-item.active {
-    background-color: #80caff;
-    color: white;
-    border-color: #80caff;
+
+  .d-flex.gap-2 {
+      flex-direction: column;
+      gap: 0.5rem !important;
   }
-  
-  .btn-outline-light {
-    border-color: #80caff;
-    color: #80caff;
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .quiz-box {
+      max-width: 80%;
   }
-  
-  .btn-outline-light:hover {
-    background-color: #80caff;
-    color: white;
-  }
-  
-  .btn-warning {
-    background-color: #a0d4e9;
-    border: none;
-    color: #003366;
-  }
-  
-  .btn-warning:hover {
-    background-color: #939cd1;
-  }
-  
+}
+
+.btn-outline-primary {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #e6f2ff;
+  border-color: #004c99;
+  color: #004c99;
+}
+
+.btn-info {
+  background-color: #17a2b8 !important;
+  border-color: #17a2b8 !important;
+  color: white !important;
+}
+
+.btn-success {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: white !important;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: white !important;
+}

@@ -1,0 +1,29 @@
+body {
+    background: linear-gradient(to right, #80caff, #b3daff, #d6eaff, #e6f2ff, #f2f6fa);
+    font-family: 'Poppins', sans-serif;
+    color: #003366;
+    overflow-x: hidden;
+  }
+  
+  .stat-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    border: none;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .list-group-item {
+    background-color: #f2f6fa;
+    color: #003366;
+    font-weight: 500;
+    border: none;
+    margin-bottom: 8px;
+  }
+  

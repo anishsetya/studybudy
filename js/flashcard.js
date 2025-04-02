@@ -6,18 +6,28 @@ document.addEventListener("DOMContentLoaded", function() {
   const back = document.querySelector(".back");
   const prevBtn = document.querySelector(".prev-btn");
   const nextBtn = document.querySelector(".next-btn");
+  const reshuffleBtn = document.querySelector(".reshuffle-btn");
 
-  if (!flashcard || !front || !back || !prevBtn || !nextBtn) {
-    console.error("Required elements not found in DOM", { flashcard, front, back, prevBtn, nextBtn });
+  if (!flashcard || !front || !back || !prevBtn || !nextBtn || !reshuffleBtn) {
+    console.error("Required elements not found in DOM", { flashcard, front, back, prevBtn, nextBtn, reshuffleBtn });
     if (front) front.textContent = "Error: Elements not found";
     if (back) back.textContent = "";
     return;
   }
 
-  console.log("Elements found:", { flashcard, front, back, prevBtn, nextBtn });
+  console.log("Elements found:", { flashcard, front, back, prevBtn, nextBtn, reshuffleBtn });
 
   let index = 0;
   let cards = [];
+
+  // Shuffle function to randomize array order
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    console.log("Shuffled cards:", array);
+  }
 
   // Get URL parameters
   const urlParams = new URLSearchParams(window.location.search);
@@ -53,7 +63,12 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
   }
 
-  console.log("Final cards array:", cards);
+  // Shuffle the cards after loading
+  if (cards.length > 1) {
+    shuffle(cards);
+  }
+
+  console.log("Final cards array (after initial shuffle):", cards);
 
   function updateCard() {
     console.log("updateCard called with index:", index);
@@ -68,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (currentCard) {
       front.textContent = currentCard.front || "No question";
       back.textContent = currentCard.back || "No answer";
-      flashcard.classList.remove("flipped");
       console.log("Updated card:", index, currentCard);
     } else {
       console.warn("Card at index not found:", index);
@@ -79,25 +93,50 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function flipCard() {
     console.log("flipCard called");
+    // Ensure transition is enabled for manual flips
+    flashcard.style.transition = "transform 0.6s ease, scale 0.3s ease";
     flashcard.classList.toggle("flipped");
+  }
+
+  function navigateToCard(newIndex) {
+    // Disable transition to make the change instantaneous
+    flashcard.style.transition = "none";
+    // Ensure the card is unflipped
+    flashcard.classList.remove("flipped");
+    // Update the index and content
+    index = newIndex;
+    updateCard();
+    // Re-enable transition for future manual flips
+    setTimeout(() => {
+      flashcard.style.transition = "transform 0.6s ease, scale 0.3s ease";
+    }, 0);
   }
 
   function nextCard() {
     console.log("nextCard called");
-    index = (index + 1) % cards.length;
-    updateCard();
+    const newIndex = (index + 1) % cards.length;
+    navigateToCard(newIndex);
   }
 
   function prevCard() {
     console.log("prevCard called");
-    index = (index - 1 + cards.length) % cards.length;
-    updateCard();
+    const newIndex = (index - 1 + cards.length) % cards.length;
+    navigateToCard(newIndex);
+  }
+
+  function reshuffleCards() {
+    console.log("reshuffleCards called");
+    if (cards.length > 1) {
+      shuffle(cards);
+      navigateToCard(0); // Reset to the first card after shuffling
+    }
   }
 
   // Attach event listeners
   flashcard.addEventListener("click", flipCard);
   nextBtn.addEventListener("click", nextCard);
   prevBtn.addEventListener("click", prevCard);
+  reshuffleBtn.addEventListener("click", reshuffleCards);
 
   // Initial update
   console.log("Calling initial updateCard");

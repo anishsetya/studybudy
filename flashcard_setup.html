@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Buddy | Flashcard Setup</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/signup.css" />
+</head>
+<body>
+
+<!-- ✅ NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-4 py-3 shadow-sm">
+  <a class="navbar-brand fw-bold fs-4" href="index.html">📚 Study Buddy</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="quiz.html">Quizzes</a></li>
+      <li class="nav-item"><a class="nav-link active" href="#">Flashcards</a></li>
+    </ul>
+    <div>
+      <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
+      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ FLASHCARD SETUP FORM -->
+<div class="signup-container d-flex justify-content-center align-items-center vh-100">
+  <div class="signup-box p-5 rounded shadow-sm bg-white">
+    <h3 class="text-center mb-4">Set Up Your Flashcards ✨</h3>
+
+    <form id="flashcardForm">
+      <div class="mb-3">
+        <label for="questions" class="form-label">Enter Your Questions (one per line, format: Question|Answer)</label>
+        <textarea class="form-control" id="questions" rows="5" placeholder="What is the capital of France?|Paris
+What is the powerhouse of the cell?|Mitochondria" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="numQuestions" class="form-label">Number of Questions to Use</label>
+        <input type="number" class="form-control" id="numQuestions" min="1" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="difficulty" class="form-label">Difficulty Level</label>
+        <select class="form-control" id="difficulty" required>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Generate Flashcards</button>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JS -->
+<script>
+  document.getElementById("flashcardForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const questionsInput = document.getElementById("questions").value.trim();
+    const numQuestions = parseInt(document.getElementById("numQuestions").value);
+    const difficulty = document.getElementById("difficulty").value;
+
+    // Parse questions into array
+    const questionsArray = questionsInput.split("\n").map(line => {
+      const [front, back] = line.split("|");
+      return { front: front?.trim(), back: back?.trim() };
+    }).filter(q => q.front && q.back); // Remove invalid entries
+
+    if (questionsArray.length === 0) {
+      alert("Please enter at least one valid question in the format: Question|Answer");
+      return;
+    }
+
+    if (numQuestions > questionsArray.length) {
+      alert(`You requested ${numQuestions} questions, but only provided ${questionsArray.length}. Using all available questions.`);
+    }
+
+    // Encode questions and build URL
+    const encodedQuestions = encodeURIComponent(JSON.stringify(questionsArray));
+    const redirectUrl = `flashcards.html?questions=${encodedQuestions}&num=${Math.min(numQuestions, questionsArray.length)}&difficulty=${difficulty}`;
+    
+    console.log("Redirecting to:", redirectUrl); // Debug log
+    window.location.href = redirectUrl;
+  });
+</script>
+</body>
+</html>

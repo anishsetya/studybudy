@@ -26,8 +26,8 @@
   <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-      <li class="nav-item"><a class="nav-link active" href="#">Quizzes</a></li>
-      <li class="nav-item"><a class="nav-link" href="flashcards.html">Flashcards</a></li>
+      <li class="nav-item"><a class="nav-link active" href="quiz.html">Quizzes</a></li>
+      <li class="nav-item"><a class="nav-link" href="flashcard_setup.html">Flashcards</a></li>
     </ul>
     <div>
       <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
@@ -37,29 +37,19 @@
 </nav>
 
 <!-- ✅ QUIZ SECTION -->
-<div class="container quiz-container mt-5">
-  <div class="quiz-box shadow-lg p-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h5>Question <span id="question-number">1</span>/10</h5>
-      <div class="progress w-50">
-        <div id="progress-bar" class="progress-bar bg-warning" role="progressbar" style="width: 10%"></div>
-      </div>
+<div class="container d-flex flex-column align-items-center justify-content-center mt-4 mt-md-5">
+  <div class="quiz-box p-3 p-md-4 rounded shadow-sm bg-white">
+    <h3 id="question" class="text-center mb-3 mb-md-4 fs-4 fs-md-3">Loading...</h3>
+    <div id="options" class="d-flex flex-column gap-2 gap-md-3 mb-3 mb-md-4">
+      <!-- Options will be dynamically added here -->
     </div>
-
-    <h4 id="question-text" class="mb-4">
-      What is the capital of France?
-    </h4>
-
-    <div id="options" class="list-group">
-      <button class="list-group-item list-group-item-action">Berlin</button>
-      <button class="list-group-item list-group-item-action">Madrid</button>
-      <button class="list-group-item list-group-item-action">Paris</button>
-      <button class="list-group-item list-group-item-action">Rome</button>
+    <div class="text-center d-flex justify-content-center gap-2 gap-md-3">
+      <button class="btn btn-secondary check-btn px-4 py-2" disabled>Check</button>
+      <button class="btn btn-primary next-btn px-4 py-2" disabled>Next</button>
     </div>
-
-    <div class="d-flex justify-content-between mt-4">
-      <button class="btn btn-outline-light" onclick="prevQuestion()">Previous</button>
-      <button class="btn btn-warning" onclick="nextQuestion()">Next</button>
+    <div id="result" class="text-center mt-3 mt-md-4" style="display: none;">
+      <h4 class="fs-5 fs-md-4">Your Score: <span id="score">0</span> / <span id="total">0</span></h4>
+      <a href="quiz.html" class="btn btn-primary mt-2 px-4 py-2">Try Again</a>
     </div>
   </div>
 </div>

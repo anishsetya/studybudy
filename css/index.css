@@ -64,3 +64,8 @@ body {
   font-weight: 600;
   margin-bottom: 10px;
 }
+/* .tile.active {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+  z-index: 10;
+} */

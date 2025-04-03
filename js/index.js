@@ -3,3 +3,6 @@ function expandTile(tile) {
     tile.classList.add('active');
   }
   
+  document.querySelectorAll('.tile').forEach(tile => {
+    tile.addEventListener('click', () => expandTile(tile));
+  });

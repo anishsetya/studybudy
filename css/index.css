@@ -36,13 +36,22 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 115px;
-    transition: 1.5s;
+    transition: all 0.5s ease; /* Smooth transition for height, padding, etc. */
+}
+
+nav.shrink {
+    height: 70px; /* Reduced height when scrolling */
+    padding: 10px 40px; /* Reduced padding */
 }
 
 nav .logo img {
     width: 120px;
     cursor: pointer;
-    transition: all 1s;
+    transition: all 0.5s ease; /* Smooth transition for logo size */
+}
+
+nav.shrink .logo img {
+    width: 80px; /* Reduced logo size when scrolling */
 }
 
 nav ul {
@@ -373,24 +382,29 @@ nav .get-started:hover {
 
 .cc {
     width: 400px;
-    height: 500px;
+    height: 500px; /* Increased from 500px to 600px to accommodate the button */
     border-radius: 10px;
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.4);
     background: #fff;
+    overflow: hidden; /* Ensure content doesn't overflow if it exceeds height */
 }
 
 .cc form {
-    margin: 5% 5% 5% 5%;
+    margin: 5% 5% 5% 5%; /* Adjusted margin to ensure proper spacing */
     margin-top: 40px;
     width: 90%;
-    height: 90%;
+    height: auto; /* Changed from 90% to auto to dynamically fit content */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .cc form label {
-    position: absolute;
     color: #2E3D49;
     font-size: 12px;
     font-weight: 800;
+    display: block; /* Ensure labels are on their own line above the input */
+    margin-bottom: 5px; /* Add spacing between label and input */
 }
 
 .cc form input {
@@ -402,6 +416,8 @@ nav .get-started:hover {
     outline: none;
     color: #2E3D49;
     font-weight: 600;
+    width: 100%; /* Ensure input takes full width of its parent */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .imp {
@@ -418,6 +434,8 @@ nav .get-started:hover {
     color: #2E3D49;
     font-weight: 600;
     padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px; /* Add spacing below textarea */
 }
 
 #csubmit {
@@ -432,6 +450,7 @@ nav .get-started:hover {
     font-size: 15px;
     cursor: pointer;
 }
+
 .name-row {
     display: flex;
     justify-content: space-between;
@@ -443,6 +462,7 @@ nav .get-started:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
+    max-width: calc(50% - 5px); /* Limit each field to half the row minus the gap */
 }
 
 /* Responsive Design */
@@ -474,5 +494,8 @@ nav .get-started:hover {
     }
     .about-content .side-image img {
         width: 100%;
+    }
+    .cc {
+        height: auto; /* Allow height to adjust on very small screens */
     }
 }

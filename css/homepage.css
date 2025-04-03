@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #80caff, #b3daff, #d6eaff, #e6f2ff, #f2f6fa);
+    color: #003366;
+    overflow-x: hidden;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    padding: 40px 20px 0;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(90deg, #184e77, #80caff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Tile Carousel Container */
+  .tile-carousel-wrapper {
+    padding: 50px 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .tile-carousel {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .tile {
+    min-width: 300px;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    flex-shrink: 0;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  
+  .tile:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  
+  .tile-content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+    text-align: left;
+  }
+  
+  .tile-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  /* .tile.active {
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    z-index: 10;
+  } */
+  
+  

@@ -1,178 +1,165 @@
-document.addEventListener("DOMContentLoaded", async function() {
-    console.log("quiz.js loaded and DOMContentLoaded fired");
-  
-    const questionEl = document.getElementById("question");
-    const optionsEl = document.getElementById("options");
-    const checkBtn = document.querySelector(".check-btn");
-    const nextBtn = document.querySelector(".next-btn");
-    const resultEl = document.getElementById("result");
-    const scoreEl = document.getElementById("score");
-    const totalEl = document.getElementById("total");
-  
-    if (!questionEl || !optionsEl || !checkBtn || !nextBtn || !resultEl || !scoreEl || !totalEl) {
-      console.error("Required elements not found in DOM");
-      if (questionEl) questionEl.textContent = "Error: Elements not found";
-      return;
+let index = 0;
+let questions = [];
+let userAnswers = [];
+let selectedAnswer = null;
+let score = 0;
+let timer;
+let timeLeft = 30 * 60;
+
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const timerEl = document.getElementById("timer");
+
+const notVisitedEl = document.getElementById("notVisited");
+const notAnsweredEl = document.getElementById("notAnswered");
+const answeredEl = document.getElementById("answered");
+const markedReviewEl = document.getElementById("markedReview");
+const answeredMarkedEl = document.getElementById("answeredMarked");
+const questionNav = document.getElementById("questionNav");
+
+const saveNextBtn = document.getElementById("saveNext");
+const saveReviewBtn = document.getElementById("saveReview");
+const clearResponseBtn = document.getElementById("clearResponse");
+const markReviewBtn = document.getElementById("markReview");
+const nextBtn = document.getElementById("nextBtn");
+const backBtn = document.getElementById("backBtn");
+
+const status = [];
+
+function startTimer() {
+  timer = setInterval(() => {
+    timeLeft--;
+    const min = Math.floor(timeLeft / 60);
+    const sec = timeLeft % 60;
+    timerEl.textContent = `${min}:${sec < 10 ? "0" + sec : sec}`;
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      submitQuiz();
     }
-  
-    let index = 0;
-    let questions = [];
-    let userAnswers = [];
-    let score = 0;
-    let selectedAnswer = null;
-  
-    // Shuffle function to randomize array order
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      console.log("Shuffled array:", array);
-    }
-  
-    // Fetch questions from backend
-    try {
-      const response = await fetch("http://your-backend-api/quizzes"); // Replace with your actual backend endpoint
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      questions = await response.json();
-      console.log("Fetched questions from backend:", questions);
-  
-      if (!Array.isArray(questions) || questions.length === 0) {
-        throw new Error("Invalid or empty questions data from backend");
-      }
-  
-      // Shuffle the options for each question
-      questions.forEach(question => {
-        if (question.options && Array.isArray(question.options)) {
-          shuffle(question.options);
-        }
-      });
-  
-      // Shuffle the questions array
-      if (questions.length > 1) {
-        shuffle(questions);
-      }
-    } catch (e) {
-      console.error("Error fetching questions:", e);
-      // Fallback to default questions if backend fails
-      questions = [
-        {
-          question: "What is the capital of France?",
-          correctAnswer: "Paris",
-          options: ["Paris", "London", "Berlin", "Madrid"]
-        },
-        {
-          question: "What is 2+2?",
-          correctAnswer: "4",
-          options: ["4", "3", "5", "6"]
-        },
-        {
-          question: "What is the largest planet?",
-          correctAnswer: "Jupiter",
-          options: ["Jupiter", "Mars", "Earth", "Saturn"]
-        }
-      ];
-      console.warn("Using default questions due to fetch error");
-  
-      // Shuffle default questions and options
-      questions.forEach(question => {
-        if (question.options && Array.isArray(question.options)) {
-          shuffle(question.options);
-        }
-      });
-      if (questions.length > 1) {
-        shuffle(questions);
-      }
-    }
-  
-    console.log("Final questions array (after shuffle):", questions);
-  
-    function displayQuestion() {
-      if (index >= questions.length) {
-        showResult();
-        return;
-      }
-  
-      const currentQuestion = questions[index];
-      questionEl.textContent = `Question ${index + 1}: ${currentQuestion.question}`;
-      optionsEl.innerHTML = "";
-      selectedAnswer = null;
-  
-      currentQuestion.options.forEach((option, i) => {
-        const btn = document.createElement("button");
-        btn.className = "btn btn-outline-primary w-100";
-        btn.textContent = option;
-        btn.addEventListener("click", () => selectAnswer(option));
-        optionsEl.appendChild(btn);
-      });
-  
-      checkBtn.disabled = true;
-      nextBtn.disabled = true;
-    }
-  
-    function selectAnswer(selected) {
-      selectedAnswer = selected;
-  
-      // Highlight the selected answer (but don't reveal correct/incorrect yet)
-      const buttons = optionsEl.querySelectorAll("button");
-      buttons.forEach(btn => {
-        if (btn.textContent === selected) {
-          btn.classList.remove("btn-outline-primary");
-          btn.classList.add("btn-info");
-        } else {
-          btn.classList.remove("btn-info");
-          btn.classList.add("btn-outline-primary");
-        }
-      });
-  
-      checkBtn.disabled = false;
-    }
-  
-    function checkAnswer() {
-      if (!selectedAnswer) return;
-  
-      const currentQuestion = questions[index];
-      userAnswers[index] = selectedAnswer;
-      if (selectedAnswer === currentQuestion.correctAnswer) {
-        score++;
-      }
-  
-      // Highlight correct and incorrect answers
-      const buttons = optionsEl.querySelectorAll("button");
-      buttons.forEach(btn => {
-        if (btn.textContent === currentQuestion.correctAnswer) {
-          btn.classList.remove("btn-outline-primary", "btn-info");
-          btn.classList.add("btn-success");
-        } else if (btn.textContent === selectedAnswer && selectedAnswer !== currentQuestion.correctAnswer) {
-          btn.classList.remove("btn-outline-primary", "btn-info");
-          btn.classList.add("btn-danger");
-        }
-        btn.disabled = true;
-      });
-  
-      checkBtn.disabled = true;
-      nextBtn.disabled = false;
-    }
-  
-    function showResult() {
-      questionEl.style.display = "none";
-      optionsEl.style.display = "none";
-      checkBtn.style.display = "none";
-      nextBtn.style.display = "none";
-      resultEl.style.display = "block";
-      scoreEl.textContent = score;
-      totalEl.textContent = questions.length;
-    }
-  
-    checkBtn.addEventListener("click", checkAnswer);
-  
-    nextBtn.addEventListener("click", () => {
-      index++;
+  }, 1000);
+}
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+function initQuiz() {
+  questions = [
+    { question: "What is the capital of France?", correctAnswer: "Paris", options: ["Paris", "London", "Berlin", "Madrid"] },
+    { question: "What is 2 + 2?", correctAnswer: "4", options: ["4", "3", "5", "6"] },
+    { question: "What is the largest planet?", correctAnswer: "Jupiter", options: ["Jupiter", "Mars", "Earth", "Saturn"] }
+  ];
+
+  questions.forEach(q => shuffle(q.options));
+  shuffle(questions);
+  userAnswers = new Array(questions.length).fill(null);
+
+  for (let i = 0; i < questions.length; i++) {
+    status[i] = "notVisited";
+    const btn = document.createElement("button");
+    btn.textContent = i + 1;
+    btn.className = "btn btn-outline-secondary";
+    btn.onclick = () => gotoQuestion(i);
+    questionNav.appendChild(btn);
+  }
+
+  updateStatusPanel();
+  startTimer();
+  displayQuestion();
+}
+
+function displayQuestion() {
+  const q = questions[index];
+  questionEl.textContent = `Q${index + 1}: ${q.question}`;
+  optionsEl.innerHTML = "";
+  selectedAnswer = userAnswers[index];
+
+  q.options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+    btn.className = `btn w-100 ${selectedAnswer === opt ? "btn-info" : "btn-outline-primary"}`;
+    btn.onclick = () => {
+      selectedAnswer = opt;
+      userAnswers[index] = opt;
       displayQuestion();
-    });
-  
-    // Initial display
-    displayQuestion();
+    };
+    optionsEl.appendChild(btn);
   });
+}
+
+function gotoQuestion(i) {
+  index = i;
+  if (status[i] === "notVisited") status[i] = "notAnswered";
+  displayQuestion();
+  updateStatusPanel();
+}
+
+function updateStatusPanel() {
+  const counts = {
+    notVisited: 0,
+    notAnswered: 0,
+    answered: 0,
+    marked: 0,
+    answeredMarked: 0
+  };
+
+  status.forEach((s, i) => {
+    counts[s]++;
+    const btn = questionNav.children[i];
+    btn.className = "btn btn-sm ";
+    if (s === "notVisited") btn.classList.add("btn-outline-secondary");
+    else if (s === "notAnswered") btn.classList.add("btn-danger");
+    else if (s === "answered") btn.classList.add("btn-success");
+    else if (s === "marked") btn.classList.add("btn-warning");
+    else if (s === "answeredMarked") btn.classList.add("btn-primary");
+  });
+
+  notVisitedEl.textContent = counts.notVisited;
+  notAnsweredEl.textContent = counts.notAnswered;
+  answeredEl.textContent = counts.answered;
+  markedReviewEl.textContent = counts.marked;
+  answeredMarkedEl.textContent = counts.answeredMarked;
+}
+
+function saveAndNext(mark = false, review = false) {
+  if (selectedAnswer) {
+    status[index] = review ? "answeredMarked" : "answered";
+  } else {
+    status[index] = review ? "marked" : "notAnswered";
+  }
+  updateStatusPanel();
+  index = (index + 1) % questions.length;
+  displayQuestion();
+}
+
+function clearResponse() {
+  userAnswers[index] = null;
+  selectedAnswer = null;
+  status[index] = "notAnswered";
+  displayQuestion();
+  updateStatusPanel();
+}
+
+function submitQuiz() {
+  clearInterval(timer);
+  window.location.href = "quiz_result.html";
+}
+
+
+saveNextBtn.onclick = () => saveAndNext(false, false);
+saveReviewBtn.onclick = () => saveAndNext(true, true);
+clearResponseBtn.onclick = clearResponse;
+markReviewBtn.onclick = () => saveAndNext(false, true);
+nextBtn.onclick = () => {
+  index = (index + 1) % questions.length;
+  displayQuestion();
+};
+backBtn.onclick = () => {
+  index = (index - 1 + questions.length) % questions.length;
+  displayQuestion();
+};
+
+initQuiz();

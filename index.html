@@ -1,63 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Study Buddy | Home</title>
-
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/index.css" />
+	<link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LearnEd</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+			if($(window).scrollTop()){
+				$('nav').addClass('black');
+			} else {
+				$('nav').removeClass('black');
+			}
+		});
+	</script>
 </head>
 <body>
 
-<!-- ✅ SIMPLIFIED NAVBAR -->
-<nav class="navbar navbar-light bg-white px-4 py-3 shadow-sm justify-content-between">
-  <a class="navbar-brand fw-bold fs-3 text-primary" href="#">📘 Study Buddy</a>
-  <div>
-    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
-    <a href="signup.html" class="btn btn-primary">Sign Up</a>
-  </div>
-</nav>
+<!-- Navigation Bar -->
+<header id="header">
+	<nav>
+		<div class="logo"><img src="assets/images/Logo.png" alt="logo"></div>
+		<ul>
+			<li><a class="active" href="">Home</a></li>
+			<li><a href="#portfolio_section">Portfolio</a></li>
+			<li><a href="#team_section">Team</a></li>
+			<li><a href="#contactus_section">Contact</a></li>
+		</ul>
+		<a class="get-started" href="login.html">Get Started</a>
+	</nav>
+	<div class="head-container">
+		<div class="quote">
+			<p>The beautiful thing about learning is that nobody can take it away from you</p>
+			<h5>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research!</h5>
+		</div>
+		<div class="svg-image">
+			<img src="assets/images/homepage_right.jpg" alt="svg">
+		</div>
+	</div>
+</header>
 
-<!-- ✅ HERO SECTION -->
-<div class="hero-section text-center mt-5">
-  <h1 class="display-3 fw-bold gradient-text">Welcome to Study Buddy</h1>
-  <p class="fs-5 text-secondary mt-2">Your personalized EdTech assistant for smarter studying.</p>
+<!-- ABOUT -->
+<div class="diffSection" id="about_section">
+	<center><p style="font-size: 50px; padding: 100px">About</p></center>
+	<div class="about-content">
+		<div class="side-image">
+			<img class="sideImage" src="assets/images/About.jpg">
+		</div>
+		<div class="side-text">
+			<h2>What you think about us ?</h2>
+			<p>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research.<br> Educational websites can include games, videos, or topic-related resources that enhance learning and supplement classroom teaching. These make the process of learning entertaining and attractive to students, especially in today's age.<br>Using HTML, CSS, and JavaScript, we can make learning easier and more interesting.</p>
+		</div>
+	</div>
 </div>
 
-<!-- ✅ TILE CAROUSEL -->
-<div class="tile-carousel-wrapper mt-5">
-  <div class="tile-carousel">
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/552785/pexels-photo-552785.jpeg');" onclick="location.href='dashboard.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Dashboard</h5>
-        <p>Track your progress and activity.</p>
-      </div>
-    </div>
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/6439041/pexels-photo-6439041.jpeg');" onclick="location.href='quiz.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Quizzes</h5>
-        <p>Take MCQs and test yourself.</p>
-      </div>
-    </div>
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/2832061/pexels-photo-2832061.jpeg');" onclick="location.href='flashcard_setup.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Flashcards</h5>
-        <p>Quick revision made fun and fast.</p>
-      </div>
-    </div>
-  </div>
+<!-- PORTFOLIO -->
+<div class="diffSection" id="portfolio_section">
+	<center><p style="font-size: 50px; padding: 100px; padding-bottom: 40px;">Portfolio</p></center>
+	<div class="content">
+		<p>“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.”</p>
+	</div>
+</div>
+<div class="extra">
+	<p>We're increasing this data every year</p>
+	<div class="smbox">
+		<span><center><div class="data">154</div><div class="det">Enrolled Students</div></center></span>
+		<span><center><div class="data">134</div><div class="det">Quizzes Taken</div></center></span>
+		<span><center><div class="data">291</div><div class="det">Flashcards Generated</div></center></span>
+	</div>
 </div>
 
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/index.js"></script>
+<!-- TEAM -->
+<div class="diffSection" id="team_section">
+	<center><p style="font-size: 50px; padding-top: 100px; padding-bottom: 60px;">We're the Creators</p></center>
+	<div class="totalcard">
+		<div class="card">
+			<center><img src="images/creator/roshan1.jpeg"></center>
+			<center><div class="card-title">Roshan Kumar</div>
+			<div id="detail">
+				<p>“Curiosity fuels lifelong learning.”</p>
+				<a href="#"><button class="btn-roshan">Follow +</button></a>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="images/creator/roshan2.jpeg"></center>
+			<center><div class="card-title">Akhil Sharma</div>
+			<div id="detail">
+				<p>“Draw the best out of each student.”</p>
+				<a href="#"><button class="btn-akhil">Follow +</button></a>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="images/creator/user3.jpg"></center>
+			<center><div class="card-title">Neha Patel</div>
+			<div id="detail">
+				<p>“Learning is the real power.”</p>
+				<a href="#"><button class="btn-roshan">Follow +</button></a>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="images/creator/user4.jpg"></center>
+			<center><div class="card-title">Arjun Mehra</div>
+			<div id="detail">
+				<p>“Tech with purpose.”</p>
+				<a href="#"><button class="btn-akhil">Follow +</button></a>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="images/creator/user5.jpg"></center>
+			<center><div class="card-title">Sara Khan</div>
+			<div id="detail">
+				<p>“Designs that teach.”</p>
+				<a href="#"><button class="btn-roshan">Follow +</button></a>
+			</div>
+			</center>
+		</div>
+	</div>
+</div>
+
+<!-- CONTACT US -->
+<div class="diffSection" id="contactus_section">
+	<center><p style="font-size: 50px; padding: 100px">Contact Us</p></center>
+	<div class="csec"></div>
+	<div class="back-contact">
+		<div class="cc">
+			<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+				<label>First Name <span class="imp">*</span></label>
+				<label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
+				<center>
+					<input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required">
+					<input type="text" name="lname" style="width: 175px" required="required"><br>
+				</center>
+				<label>Email <span class="imp">*</span></label><br>
+				<input type="email" name="mail" style="width: 100%" required="required"><br>
+				<label>Message <span class="imp">*</span></label><br>
+				<input type="text" name="message" style="width: 100%" required="required"><br>
+				<label>Additional Details</label><br>
+				<textarea name="additional"></textarea><br>
+				<button type="submit" id="csubmit">Send Message</button>
+			</form>
+		</div>
+	</div>
+</div>
+
 </body>
 </html>

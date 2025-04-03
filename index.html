@@ -150,17 +150,21 @@
 
 <!-- CONTACT US -->
 <div class="diffSection" id="contactus_section">
-	<center><p style="font-size: 50px; padding: 100px">Contact Us</p></center>
+	<center><p style="font-size: 50px; padding: 5px 100px 100px 100px">Contact Us</p></center>
 	<div class="csec"></div>
 	<div class="back-contact">
 		<div class="cc">
 			<form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
-				<label>First Name <span class="imp">*</span></label>
-				<label style="margin-left: 185px">Last Name <span class="imp">*</span></label><br>
-				<center>
-					<input type="text" name="fname" style="margin-right: 10px; width: 175px" required="required">
-					<input type="text" name="lname" style="width: 175px" required="required"><br>
-				</center>
+				<div class="name-row">
+					<div class="name-field">
+						<label>First Name <span class="imp">*</span></label>
+						<input type="text" name="fname" required="required">
+					</div>
+					<div class="name-field">
+						<label>Last Name <span class="imp">*</span></label>
+						<input type="text" name="lname" required="required">
+					</div>
+				</div>				
 				<label>Email <span class="imp">*</span></label><br>
 				<input type="email" name="mail" style="width: 100%" required="required"><br>
 				<label>Message <span class="imp">*</span></label><br>

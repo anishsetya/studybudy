@@ -16,70 +16,83 @@
   <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
+  <!-- Fullscreen Background Image -->
+  <div class="background-image"></div>
 
-<!-- ✅ NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white px-4 py-3 shadow-sm">
-  <a class="navbar-brand fw-bold fs-4" href="index.html">📚 Study Buddy</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-      <li class="nav-item"><a class="nav-link" href="quiz_setup.html">Quizzes</a></li>
-      <li class="nav-item"><a class="nav-link" href="flashcard_setup.html">Flashcards</a></li>
-    </ul>
-    <div>
-      <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
-      <a href="signup.html" class="btn btn-primary">Sign Up</a>
+  <!-- ✅ NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white px-4 shadow-sm">
+    <!-- Logo and Brand -->
+    <a class="navbar-brand d-flex align-items-center fw-bold fs-4" href="homepage.html">
+      <img src="assets/images/Logo.png" alt="logo" height="65" width="85" class="me-2" />
+    </a>
+  
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar Content -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Centered Nav Links -->
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item "><a class="nav-link active fs-5 mx-3" href="#">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link fs-5 mx-3" href="quiz_setup.html">Quizzes</a></li>
+        <li class="nav-item"><a class="nav-link fs-5 mx-3" href="flashcard_setup.html">Flashcards</a></li>
+      </ul>
+  
+      <!-- Logout Button on Right -->
+      <a href="login.html" class="btn logout-btn">Logout</a>
     </div>
-  </div>
-</nav>
+  </nav>  
 
-<!-- ✅ DASHBOARD CONTENT -->
-<div class="container mt-5">
-  <h2 class="text-center fw-semibold mb-4">Welcome Back, Student 👋</h2>
+  <!-- ✅ MAIN DASHBOARD CONTENT -->
+  <div class="dashboard-wrapper d-flex justify-content-center align-items-start px-3 py-5">
+    <div class="dashboard-container bg-white rounded-4 shadow-lg p-5 w-100" style="max-width: 1100px;">
+      
+      <h2 class="text-center fw-semibold mb-4">Welcome Back</h2>
 
-  <!-- Stats Cards -->
-  <div class="row g-4 mb-4">
-    <div class="col-md-4">
-      <div class="card stat-card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Quizzes Taken</h5>
-          <p class="display-6 fw-bold text-primary">6</p>
+      <!-- Stats Cards -->
+      <div class="row g-4 mb-4 justify-content-center text-center">
+        <div class="col-md-4">
+          <div class="card stat-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Quizzes Taken</h5>
+              <p class="display-6 fw-bold text-primary">6</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card stat-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Flashcards Reviewed</h5>
+              <p class="display-6 fw-bold text-primary">27</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card stat-card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Last Login</h5>
+              <p class="display-6 fw-bold text-primary">Today</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card stat-card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Flashcards Reviewed</h5>
-          <p class="display-6 fw-bold text-primary">27</p>
-        </div>
+
+      <!-- Upcoming Section -->
+      <div class="card p-4 shadow-sm">
+        <h5 class="mb-3">Upcoming</h5>
+        <ul class="list-group">
+          <li class="list-group-item">📅 Flashcard Review - Tomorrow</li>
+          <li class="list-group-item">📝 Quiz on Chapter 3 - Friday</li>
+          <li class="list-group-item">📊 Weekly Summary - Saturday</li>
+        </ul>
       </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card stat-card shadow-sm">
-        <div class="card-body">
-          <h5 class="card-title">Last Login</h5>
-          <p class="display-6 fw-bold text-primary">Today</p>
-        </div>
-      </div>
+
     </div>
   </div>
 
-  <!-- Placeholder Upcoming Section -->
-  <div class="card p-4 shadow-sm">
-    <h5 class="mb-3">Upcoming</h5>
-    <ul class="list-group">
-      <li class="list-group-item">📅 Flashcard Review - Tomorrow</li>
-      <li class="list-group-item">📝 Quiz on Chapter 3 - Friday</li>
-      <li class="list-group-item">📊 Weekly Summary - Saturday</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

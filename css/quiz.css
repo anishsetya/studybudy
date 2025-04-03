@@ -7,6 +7,17 @@ body {
   padding: 0;
 }
 
+.background-image {
+  background: url('../assets/images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.85;
+}
 .quiz-page {
   display: flex;
   flex-direction: row-reverse;
@@ -141,7 +152,7 @@ body {
 }
 
 .btn-success {
-  background-color: #28a745 !important;
+  background-color: #00400f !important;
   color: white;
 }
 

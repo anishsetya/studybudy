@@ -1,72 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Study Buddy | Home</title>
-
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/index.css" />
+	<link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LearnEd</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<!-- Add Font Awesome for icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<script>
+		$(window).on('scroll', function(){
+			if($(window).scrollTop()){
+				$('nav').addClass('black');
+			} else {
+				$('nav').removeClass('black');
+			}
+		});
+	</script>
 </head>
 <body>
 
-<!-- ✅ SIMPLIFIED NAVBAR -->
-<nav class="navbar navbar-light bg-white px-4 py-3 shadow-sm justify-content-between">
-  <a class="navbar-brand fw-bold fs-3 text-primary" href="#">📘 Study Buddy</a>
-  <div>
-    <a href="login.html" class="btn btn-outline-primary me-2">Login</a>
-    <a href="signup.html" class="btn btn-primary">Sign Up</a>
-  </div>
-</nav>
+<!-- Navigation Bar -->
+<header id="header">
+	<nav>
+		<div class="logo"><img src="assets/images/Logo.png" alt="logo"></div>
+		<ul>
+			<li><a class="active" href="">Home</a></li>
+			<li><a href="#portfolio_section">Portfolio</a></li>
+			<li><a href="#team_section">Team</a></li>
+			<li><a href="#contactus_section">Contact</a></li>
+		</ul>
+		<a class="get-started" href="login.html">Get Started</a>
+	</nav>
+	<div class="head-container">
+		<div class="quote">
+			<p>The beautiful thing about learning is that nobody can take it away from you</p>
+			<h5>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research!</h5>
+		</div>
+		<div class="svg-image">
+			<img src="assets/images/homepage_right.png" alt="svg">
+		</div>
+	</div>
+</header>
 
-<!-- ✅ HERO SECTION -->
-<div class="hero-section text-center mt-5">
-  <h1 class="display-3 fw-bold gradient-text">Welcome to Study Buddy</h1>
-  <p class="fs-5 text-secondary mt-2">Your personalized EdTech assistant for smarter studying.</p>
+<!-- ABOUT -->
+<div class="diffSection" id="about_section">
+	<center><p style="font-size: 50px; padding: 40px">About</p></center>
+	<div class="about-content">
+		<div class="side-image">
+			<img class="sideImage" src="assets/images/About.png">
+		</div>
+		<div class="side-text">
+			<h2>What you think about us ?</h2>
+			<p>Education is the process of facilitating learning, or the acquisition of knowledge, skills, values, beliefs, and habits. Educational methods include teaching, training, storytelling, discussion and directed research.<br> Educational websites can include games, videos, or topic-related resources that enhance learning and supplement classroom teaching. These make the process of learning entertaining and attractive to students, especially in today's age.<br>Using HTML, CSS, and JavaScript, we can make learning easier and more interesting.</p>
+		</div>
+	</div>
 </div>
 
-<!-- ✅ TILE CAROUSEL -->
-<div class="tile-carousel-wrapper mt-5">
-  <div class="tile-carousel">
-
-    <!-- Tile 1 -->
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/552785/pexels-photo-552785.jpeg');"
-         onclick="location.href='dashboard.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Dashboard</h5>
-        <p>Track your progress and activity.</p>
-      </div>
-    </div>
-
-    <!-- Tile 2 -->
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/6439041/pexels-photo-6439041.jpeg');"
-         onclick="location.href='quiz.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Quizzes</h5>
-        <p>Take MCQs and test yourself.</p>
-      </div>
-    </div>
-
-    <!-- Tile 3 -->
-    <div class="tile" style="background-image: url('https://images.pexels.com/photos/2832061/pexels-photo-2832061.jpeg');"
-         onclick="location.href='flashcards.html'">
-      <div class="tile-content">
-        <h5 class="tile-title">Flashcards</h5>
-        <p>Quick revision made fun and fast.</p>
-      </div>
-    </div>
-
-  </div>
+<!-- PORTFOLIO -->
+<div class="diffSection" id="portfolio_section">
+	<center><p style="font-size: 50px; padding: 100px; padding-bottom: 40px;">Portfolio</p></center>
+	<div class="content">
+		<p>“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.”</p>
+	</div>
+</div>
+<div class="extra">
+	<p>We're increasing this data every year</p>
+	<div class="smbox">
+		<span><center><div class="data">154</div><div class="det">Enrolled Students</div></center></span>
+		<span><center><div class="data">134</div><div class="det">Quizzes Taken</div></center></span>
+		<span><center><div class="data">291</div><div class="det">Flashcards Generated</div></center></span>
+	</div>
 </div>
 
-<!-- Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<!-- TEAM -->
+<div class="diffSection" id="team_section">
+	<center><p style="font-size: 50px; padding-top: 100px; padding-bottom: 60px;">We're the Creators</p></center>
+	<div class="totalcard">
+		<div class="card">
+			<center><img src="assets/images/creator/aditya.jpg"></center>
+			<center><div class="card-title">Aditya Aggarwal</div>
+			<div id="detail">
+				<p>“Curiosity fuels lifelong learning.”</p>
+				<div class="social-links">
+					<a href="https://github.com/aditya-1503" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://linkedin.com/in/aditya-aggarwal-174057228/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="assets/images/creator/anish.jpg"></center>
+			<center><div class="card-title">Anish Setya</div>
+			<div id="detail">
+				<p>“Draw the best out of each student.”</p>
+				<div class="social-links">
+					<a href="https://github.com/akhilsharma" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://linkedin.com/in/anish-setya-a0a611252/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="assets/images/creator/akshay.jpg"></center>
+			<center><div class="card-title">Akshay Saxena</div>
+			<div id="detail">
+				<p>“Learning is the real power.”</p>
+				<div class="social-links">
+					<a href="https://github.com/nehapatel" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://linkedin.com/in/akshay-saxena-1aa044256/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="assets/images/creator/gaurav.jpg"></center>
+			<center><div class="card-title">Gaurav Pradeep</div>
+			<div id="detail">
+				<p>“Tech with purpose.”</p>
+				<div class="social-links">
+					<a href="https://github.com/gauravpradeep" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://linkedin.com/in/gaurav-pradeep-352253255/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+			</center>
+		</div>
+
+		<div class="card">
+			<center><img src="assets/images/creator/navya.jpg"></center>
+			<center><div class="card-title">Navya Kulhari</div>
+			<div id="detail">
+				<p>“Designs that teach.”</p>
+				<div class="social-links">
+					<a href="https://github.com/navya227" target="_blank"><i class="fab fa-github"></i></a>
+					<a href="https://linkedin.com/in/navya-kulhari227/" target="_blank"><i class="fab fa-linkedin"></i></a>
+				</div>
+			</div>
+			</center>
+		</div>
+	</div>
+</div>
+
+<!-- CONTACT US -->
+<div class="diffSection" id="contactus_section">
+    <center><p style="font-size: 50px; padding: 5px 100px 100px 100px">Contact Us</p></center>
+    <div class="csec"></div>
+    <div class="back-contact">
+        <div class="cc">
+            <form action="mailto:roshank9419@gmail.com" method="post" enctype="text/plain">
+                <div class="name-row">
+                    <div class="name-field">
+                        <label for="fname">First Name <span class="imp">*</span></label>
+                        <input type="text" id="fname" name="fname" required="required">
+                    </div>
+                    <div class="name-field">
+                        <label for="lname">Last Name <span class="imp">*</span></label>
+                        <input type="text" id="lname" name="lname" required="required">
+                    </div>
+                </div>                
+                <label for="mail">Email <span class="imp">*</span></label><br>
+                <input type="email" id="mail" name="mail" required="required"><br>
+                <label for="message">Message <span class="imp">*</span></label><br>
+                <input type="text" id="message" name="message" required="required"><br>
+                <label for="additional">Additional Details</label><br>
+                <textarea id="additional" name="additional"></textarea><br>
+                <button type="submit" id="csubmit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92a5cd660a4b4576',t:'MTc0MzY1NDMyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

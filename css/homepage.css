@@ -1,0 +1,83 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../assets/images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.homepage-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section {
+  padding-bottom: 30px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #211C84, #4D55CC, #7A73D1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Tile Carousel */
+.tile-carousel-wrapper {
+  padding: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.tile-carousel {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.tile {
+  min-width: 300px;
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  flex-shrink: 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tile-content {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 20px;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+  text-align: left;
+}
+
+.tile-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
